@@ -1,0 +1,58 @@
+#include "E--_RT.c"
+int main(int argc, char *argv[]) {
+	E_RT_init(argc, argv);
+JMP(begin);
+Label0: R005=ADD(R000,2);
+STI(R001, R000);
+R000=SUB(R000,1);
+MOVI(R000, R001);
+LDI(R005, R006);
+R005=ADD(R005,1);
+LDF(R005, F001);
+R005=ADD(R005,1);
+MOVS("Hello World..!!!", R007);
+MOVS("\n", R008);
+PRTI(R006);
+PRTS(R008);
+PRTF(F001);
+PRTS(R008);
+PRTS(R007);
+PRTS(R008);
+Label1: MOVI(R001, R000);
+R000=ADD(R000,1);
+LDI(R000, R001);
+R000=ADD(R000,1);
+LDI(R000, R004);
+R000=ADD(R000,2);
+JMPI(R004);
+eventLabel_a: INI(R008);
+INF(F008);
+STI(R008, R000);
+R000=SUB(R000,1);
+STF(F008, R000);
+R000=SUB(R000,1);
+STF(F008, R000);
+R000=SUB(R000,1);
+STI(R008, R000);
+R000=SUB(R000,1);
+MOVL(Label2, R004);
+STI(R004, R000);
+R000=SUB(R000,1);
+JMP(Label0);
+Label2: R000=ADD(R000,1);
+LDF(R000, F008);
+R000=ADD(R000,1);
+LDI(R000, R008);
+JMP(EventMStart);
+begin: MOVI(10000, R000);
+IN(R008);
+IN(R008);
+IN(R008);
+EventMStart: IN(R008);
+JMPC(GT(64, R008), EventMOut);
+JMPC(EQ(97, R008), eventLabel_a);
+JMP(EventMStart);
+EventMOut: PRTS("\nDone\n");
+
+	E_RT_exit(); return 0;
+}

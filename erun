@@ -1,0 +1,5 @@
+#!/bin/bash
+make assembler
+f=$1
+shift
+./demo $f && ./${f/%.i/} $*

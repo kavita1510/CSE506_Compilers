@@ -1,0 +1,15 @@
+ICode.tab.h
+ICode_lexer.C
+ICode_parser.C
+*.output
+E--_parser.C
+outputs
+parser
+demo
+*.o
+cscope.out
+core
+.*.swp
+.*.swo
+.*.swm
+out
